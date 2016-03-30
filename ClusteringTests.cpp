@@ -1654,7 +1654,7 @@ void test_cluster_subscript(ErrorContext &ec, unsigned int numRuns) {
             pass = true;
 
             for (int i = 0; i < 200; i++) {
-//                c[i] = Point(100); // c[i] read-only and not assignable
+               // c[i] = Point(100); // c[i] read-only and not assignable
             }
 
             ec.result(pass);
@@ -2541,7 +2541,7 @@ void test_cluster_centroid(ErrorContext &ec, unsigned int numRuns) { // TODO imp
             c3.add(p1); c3.add(p2);
 
             c3.centroid.compute();
-
+            
             c1 -= c2;
 
             pass = (! c1.centroid.isValid()) && c2.centroid.isValid();
@@ -2579,7 +2579,7 @@ void test_cluster_centroid(ErrorContext &ec, unsigned int numRuns) { // TODO imp
             c1 -= c2;
 
             pass = pass && (! c1.centroid.isValid()) && c2.centroid.isValid();
-
+            
             Point inf(50);
             for (int i = 0; i < 50; i++) inf[i] = std::numeric_limits<double>::max();
 
@@ -2630,7 +2630,7 @@ void test_cluster_id(ErrorContext &ec, unsigned int numRuns) {
             Cluster c4(10);
 
             c4 = c3;
-
+            
             pass = pass && (c4.getId() == c3.getId());
 
             ec.result(pass);
@@ -2749,8 +2749,8 @@ void test_cluster_initselection(ErrorContext &ec, unsigned int numRuns) {
             ec.result(pass);
         }
 
-//        ec.DESC("k=13 < size=15000 of Cluster - COMMENTED OUT");
-//        pass = true;
+       // ec.DESC("k=13 < size=15000 of Cluster - COMMENTED OUT");
+       // pass = true;
         ec.DESC("k=13 << Cluster size=15000");
 
         {
@@ -2779,7 +2779,7 @@ void test_cluster_initselection(ErrorContext &ec, unsigned int numRuns) {
 
             ec.result(pass);
         }
-//        ec.result(pass);
+       // ec.result(pass);
     }
 }
 
@@ -2868,7 +2868,9 @@ void test_cluster_IO(ErrorContext &ec, unsigned int numRuns) {
                        (c[0].getId() + 1 == c[1].getId()); // two points didn't load, but no id-s wasted
 
                 if (! pass)
+                { 
                     std::cout << c[0].getId() << ' ' << c[1].getId() << std::endl;
+                }
             } else {
                 pass = false;
             }
@@ -3040,7 +3042,7 @@ void test_kmeans_run(ErrorContext &ec, unsigned int numRuns) {
             KMeans kmeans(5, 4, "points4.csv", 20);
 
             kmeans.run();
-
+            
             // The points should end up each in its own cluster
             pass =  (kmeans.getNumNonemptyClusters() == 4) &&
                     (kmeans[0].getSize() == 1) &&
@@ -3061,7 +3063,7 @@ void test_kmeans_run(ErrorContext &ec, unsigned int numRuns) {
                 KMeans kmeans(5, 4, "points4.csv", i);
 
                 kmeans.run();
-
+                
                 if (kmeans.getNumMovesLastIter() > 0) {
                     pass = pass && (i > prevIter);
                     prevIter = i;

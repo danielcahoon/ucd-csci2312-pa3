@@ -11,6 +11,9 @@
 #include "ErrorContext.h"
 #include "ClusteringTests.h"
 
+#include "Cluster.h"
+#include "Point.h"
+
 using std::cout;
 using std::endl;
 
@@ -20,7 +23,7 @@ int main() {
 
     const int NumIters = 3;
 
-    cout << endl << "Testing PA2!!" << endl << endl;
+    cout << endl << "Testing PA3!!" << endl << endl;
 
     cout << "NOTE:  If you see any memory errors, you MUST fix them!" << endl;
     cout << "       Tests intentionally invoke destructors after they complete," << endl;
@@ -52,9 +55,9 @@ int main() {
     test_cluster_addremove(ec, NumIters);
     test_cluster_contain(ec, NumIters);
     test_cluster_move(ec, NumIters);
+    test_cluster_CAO(ec, NumIters);
     test_cluster_copying(ec, NumIters);
     test_cluster_assignment(ec, NumIters);
-    test_cluster_CAO(ec, NumIters);
     test_cluster_SAO(ec, NumIters);
     test_cluster_centroid(ec, NumIters);
     test_cluster_id(ec, NumIters);
@@ -68,6 +71,7 @@ int main() {
     test_kmeans_toofewpoints(ec, NumIters);
     test_kmeans_largepoints(ec, NumIters);
     test_kmeans_toomanyclusters(ec, NumIters);
+
 
     return 0;
 }

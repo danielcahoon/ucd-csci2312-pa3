@@ -23,7 +23,7 @@ namespace Clustering {
     class Cluster {
         unsigned int __dimensionality;
         unsigned int __size;
-        LNodePtr __points;
+        LNodePtr __head;
 
         unsigned int __id;
 
@@ -131,4 +131,5 @@ namespace Clustering {
     };
 
 }
-#endif //CLUSTERING_CLUSTER_H
+//CLUSTERING_CLUSTER_H
+#endif

@@ -69,4 +69,5 @@ namespace Clustering {
     };
 
 }
-#endif //CLUSTERING_POINT_H
+//CLUSTERING_POINT_H
+#endif
